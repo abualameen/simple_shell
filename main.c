@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char *lineptr, *cpy, *token, *tokeeen;
+	char *lineptr, *cpy, *token;
 	size_t n = 32;
 	ssize_t read_line;
 	int arguments;
@@ -20,7 +20,7 @@ int main(void)
 		read_line = getline(&lineptr, &n, stdin);
 		if (read_line == -1)
 		{
-			perror("exit\n\n\n[Disconnected...]");
+			/*perror("exit\n\n\n[Disconnected...]");*/
 			exit(1);
 		}
 		cpy = malloc(sizeof(char) * read_line);
