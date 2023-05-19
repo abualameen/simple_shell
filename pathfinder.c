@@ -10,7 +10,7 @@
 char *pathfinder(char **ptr, char *storage, char *command)
 {
 	char *path, *dir;
-	char copy[128];
+	char copy[600];
 	int i = 0, j;
 
 	path = _getenv("PATH");

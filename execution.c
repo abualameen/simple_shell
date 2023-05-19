@@ -10,8 +10,8 @@ int execution(char *cpy, int arguments)
 {
 	char *tokeeen, **argv;
 	int j = 0;
-	char *ptr[5];
-	char store[125];
+	char *ptr[8];
+	char store[600];
 
 	tokeeen = strtok(cpy, " \n");
 	argv = (char **)malloc(arguments * sizeof(char *));
