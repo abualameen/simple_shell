@@ -7,9 +7,15 @@
  */
 char *_getenv(const char *name)
 {
-	int i, j, k;
+	int i, j, k, l;
 
 	i = 0;
+	l = 0;
+	while(environ[l])
+	{
+		printf("%s\n", environ[l]);
+		l++;
+	}
 	while (environ[i] != NULL)
 	{
 		for (j = 0; environ[i][j] != '='; j++)

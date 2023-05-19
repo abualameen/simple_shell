@@ -11,10 +11,12 @@ int checkstat(char *command)
 
 	if (stat(command, &st) == 0)
 	{
+		printf("found\n");
 		return (1);
 	}
 	else
 	{
+		printf("notfound\n");
 		return (0);
 	}
 }
