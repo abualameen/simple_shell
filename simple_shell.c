@@ -56,8 +56,6 @@ int main(int argc, char **argv)
 			lsss_handler(paths_dir, toks, k, state);
 		}
 		waitpid(pid1, &status1, 0);
-		printf("both process finised successfully\n");
-		
 	}		
 	
 	free(paths);

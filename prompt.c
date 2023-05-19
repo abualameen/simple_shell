@@ -15,5 +15,6 @@ void prompt(void)
 		write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 		first_time = 0;
 	}
-	printf (":)");
+	_putchar(':');
+	_putchar(')');
 }

@@ -17,11 +17,11 @@ char *_getenv(const char *name)
 
 	if (part_a == NULL)
 	{
-		printf("malloc err1");
+		perror("malloc err1");
 	}
 	if (part_b == NULL)
 	{
-		printf("malloc erro2");
+		perror("malloc erro2");
 	}
 	for (i = 0; environ[i] != NULL; i++)
 	{
