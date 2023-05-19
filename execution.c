@@ -10,8 +10,8 @@ int execution(char *cpy, int arguments)
 {
 	char *tokeeen, **argv;
 	int j = 0;
-	char *ptr[5];
-	char store[125];
+	char *ptr[32];
+	char store[256];
 
 	tokeeen = strtok(cpy, " \n");
 	argv = (char **)malloc(arguments * sizeof(char *));
@@ -29,6 +29,7 @@ int execution(char *cpy, int arguments)
 		argv[j] = NULL;
 		if (checkstat(argv[0]) == 0)
 		{
+			printf("before entering pathfinder with %s\n", argv[0]);
 			if (pathfinder(ptr, store, argv[0]) == NULL)
 			{
 				perror("./shhhhhell");
