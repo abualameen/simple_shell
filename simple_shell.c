@@ -1,60 +1,65 @@
 #include "main.h"
 /**
-* main - entry point
-*
-* Return: 0
-*/
-int main(void)
+ * main - entry point
+ * @argc: arg count
+ * @argc: arg vector
+ * Return: 0
+ */
+int main(int argc, char **argv)
 {
-	char *lineptr;
-	size_t n = 32;
-	ssize_t read_line;
-	char *token;
-	char *argv[1025];
-	const char *delim;
-	int j;
-	int t;
-	pid_t pid;
-	delim = " \n";
+	char *paths = _getenv("PATH");
+	char *paths_dir[1025];
+	char *toks[4000];
+	int k = 0;
+	char *path_dir; 
+	pid_t pid1;
+	int state;
+	int status1;
+	extern char **environ;
+	(void)argc;
+	(void)argv;
+
+	path_dir = strtok(paths, ":");
+	while(path_dir != NULL)
+	{
+		paths_dir[k] = path_dir;
+		k++;
+		path_dir = strtok(NULL, ":");
+	}
 	while (1)
 	{
-		j = 0;
-		printf("$ ");
-		lineptr = malloc(sizeof(char) * n);
-		read_line = getline(&lineptr, &n, stdin);
-		if (read_line == -1)
+		prompt();
+		fflush(stdout);
+		read_lin(toks);
+		if (_strcom(toks[0], "exit") == 0)
 		{
-			perror("readline failed");
-			exit(1);
+			break;
 		}
-		token = strtok(lineptr, delim);
-		while (token)
+		state = 0;
+		if (toks[0][0] =='/')
 		{
-			argv[j++] = token;
-			/*printf("%s", token);*/
-			token = strtok(NULL, delim);
-		}
-		argv[j] = NULL;
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("child not born\n");
-			exit(1);
-		}
-		else if (pid == 0)
-		{
-			t = execve(argv[0], argv, NULL);
-			if (t = -1)
+			pid1 = fork();
+			if (pid1 == -1)
 			{
-				perror("execve error");
+				printf("second child not born");
 				exit(1);
 			}
-		}	
+			else if (pid1 == 0)
+			{
+				execve(toks[0], toks, environ);
+				perror("execve error for full path not search\n");
+				exit(1);
+			}
+		}
 		else
 		{
-			wait(NULL);
+			lsss_handler(paths_dir, toks, k, state);
 		}
-		free(lineptr);
-	}
+		waitpid(pid1, &status1, 0);
+		printf("both process finised successfully\n");
+		
+	}		
+	
+	free(paths);
 	return (0);
 }
