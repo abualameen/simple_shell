@@ -1,21 +1,22 @@
 #include "main.h"
+int extend(void);
 /**
- * lss_handler - handles ls and env cases
+ * lsss_handler - handles ls and env cases
  * @pts: paths frm PATH ENV VARIABLES
  * @tks: tokens tokenised
- * @k: int 
+ * @k: int
  * @state: state in the logic 0 or 1
  * Return: void
  */
 
 void lsss_handler(char *pts[], char *tks[], int k, int state)
 {
-	char * cpy_path;
+	char *cpy_path;
 	int e;
-	extern char **environ;
+	/*extern char **environ;*/
 	int status;
 	pid_t pid;
-	
+
 	for (e = 0; e < k; e++)
 	{
 		cpy_path = malloc(_strlen(pts[e]) + _strlen(tks[0]) + 5);
@@ -68,4 +69,14 @@ void lsss_handler(char *pts[], char *tks[], int k, int state)
 		waitpid(pid, &status, 0);
 	}
 	free(cpy_path);
+}
+
+/**
+ * extend - extends line
+ * Return: 0
+ */
+
+int extend(void)
+{
+	return (0);
 }

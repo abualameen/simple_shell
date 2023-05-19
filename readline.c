@@ -22,7 +22,7 @@ void read_lin(char *tks[])
 
 	j = 0;
 	token_line = strtok(lineptr, " \n");
-	while(token_line)
+	while (token_line)
 	{
 		tks[j] = token_line;
 		j++;

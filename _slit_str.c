@@ -16,7 +16,7 @@ void _slit_str(char *s, char *part1, char *part2, char delim)
 	int count = 0;
 	char *s_cp;
 	char *dst;
-	
+
 	a = b = c = 0;
 	count = _strlen(s);
 	dst = malloc(sizeof(char *) * count);

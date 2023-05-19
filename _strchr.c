@@ -2,14 +2,14 @@
 
 /**
  * _strchr - search by compareing a char to a str returns if a match is found
- * @str - str to compared
- * @n - compared str
+ * @str: str to compared
+ * @n:  compared str
  * Return: 0
  */
 
 char *_strchr(char *str, int n)
 {
-	while( str != NULL)
+	while (str != NULL)
 	{
 		if (*str == n)
 		{

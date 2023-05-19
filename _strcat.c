@@ -13,6 +13,7 @@ char *_strcat(char *dest, char *src)
 	int f;
 	int t;
 	int countt = 0;
+
 	for (g = 0; dest[g] != '\0'; g++)
 	{
 		count++;

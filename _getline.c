@@ -1,20 +1,21 @@
-#include "main.h"
+#include "miin.h"
+#define LIN_MAX 3000
+int line_no(void);
 /**
- * _get_line - getline from stdin
- * @lineptr: pointer to buff
+ * _get_line - getline input from user
+ * @lineptr: contains line read
  * @n: size of buff pointed to by lineptr
  * @stream: stream where input is taken
  * Return: void
  */
 
-#define LIN_MAX 3000
 
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 {
 	char buf[LIN_MAX];
-	ssize_t nbytes;	
+	ssize_t nbytes;
 	char *new_lineptr;
-	
+
 	*n = LIN_MAX;
 	if (lineptr == NULL || n == NULL)
 	{
@@ -27,7 +28,7 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 		return (-1);
 	}
 	if (*lineptr == NULL)
-	 {
+	{
 		*lineptr = malloc(*n);
 		if (*lineptr == NULL)
 		{
@@ -60,4 +61,14 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 	free(*lineptr);
 	*lineptr = NULL;
 	return (-1);
+}
+
+/**
+ * line_no - checks
+ * Return: 0
+ */
+
+int line_no(void)
+{
+	return (0);
 }

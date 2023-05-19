@@ -11,6 +11,9 @@
 #define CLEAR_SCREEN "\033[1;1H\033[2J\0"
 
 
+
+
+extern char **environ;
 int _putchar(char c);
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
 void read_lin(char *tks[]);

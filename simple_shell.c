@@ -1,8 +1,9 @@
 #include "main.h"
+int checker(void);
 /**
  * main - entry point
  * @argc: arg count
- * @argc: arg vector
+ * @argv: arg vector
  * Return: 0
  */
 int main(int argc, char **argv)
@@ -11,16 +12,16 @@ int main(int argc, char **argv)
 	char *paths_dir[1025];
 	char *toks[4000];
 	int k = 0;
-	char *path_dir; 
+	char *path_dir;
 	pid_t pid1;
 	int state;
 	int status1;
-	extern char **environ;
+	/*extern char **environ;*/
 	(void)argc;
 	(void)argv;
 
 	path_dir = strtok(paths, ":");
-	while(path_dir != NULL)
+	while (path_dir != NULL)
 	{
 		paths_dir[k] = path_dir;
 		k++;
@@ -36,7 +37,7 @@ int main(int argc, char **argv)
 			break;
 		}
 		state = 0;
-		if (toks[0][0] =='/')
+		if (toks[0][0] == '/')
 		{
 			pid1 = fork();
 			if (pid1 == -1)
@@ -56,8 +57,17 @@ int main(int argc, char **argv)
 			lsss_handler(paths_dir, toks, k, state);
 		}
 		waitpid(pid1, &status1, 0);
-	}		
-	
+	}
 	free(paths);
+	return (0);
+}
+
+/**
+ * checker - checks
+ * Return: 0
+ */
+
+int checker(void)
+{
 	return (0);
 }
