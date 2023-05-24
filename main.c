@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 		{
 			prompt();
 			fflush(stdout);
+			state = 0;
 			j = read_lin(toks);
 			if (_strcom(toks[0], "exit") == 0)
 			{
@@ -52,13 +53,13 @@ int main(int argc, char **argv)
 				getcwd(c_wd, sizeof(c_wd));
 				cd_handler(toks, c_wd);
 			}
-			state = 0;
-			if (toks[0][0] == '/')
+		
+			else if (toks[0][0] == '/')
 			{
 				pid1 = fork();
 				if (pid1 == -1)
 				{
-					printf("second child not born");
+					perror("second child not born");
 					exit(1);
 				}
 				else if (pid1 == 0)
@@ -72,9 +73,13 @@ int main(int argc, char **argv)
 					waitpid(pid1, &status1, 0);
 				}
 			}
-			else
+			else if (_strcom(toks[0], "ls") == 0 || (_strcom(toks[0], "env") == 0))
 			{
 				lsss_handler(paths_dir, toks, k, state);
+			}
+			else
+			{
+				perror("command not found");
 			}
 		}
 		for (r = 0; r < j; r++)
@@ -86,6 +91,7 @@ int main(int argc, char **argv)
 	else
 	{
 		fflush(stdout);
+		state = 0;
 		j = read_lin(toks);
 		if (_strcom(toks[0], "exit") == 0)
 		{
@@ -100,13 +106,12 @@ int main(int argc, char **argv)
 			getcwd(c_wd, sizeof(c_wd));
 			cd_handler(toks, c_wd);
 		}
-		state = 0;
-		if (toks[0][0] == '/')
+		else if (toks[0][0] == '/')
 		{
 			pid1 = fork();
 			if (pid1 == -1)
 			{
-				printf("second child not born");
+				perror("second child not born");
 				exit(1);
 			}
 			else if (pid1 == 0)
@@ -120,9 +125,13 @@ int main(int argc, char **argv)
 				waitpid(pid1, &status1, 0);
 			}
 		}
-		else
+		else if (_strcom(toks[0], "ls") == 0 || (_strcom(toks[0], "env") == 0))
 		{
 			lsss_handler(paths_dir, toks, k, state);
+		}
+		else
+		{
+			perror("command not found");
 		}
 		for (r = 0; r < j; r++)
 		{

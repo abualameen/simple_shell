@@ -11,10 +11,9 @@ int read_lin(char *tks[])
 	char *lineptr = NULL;
 	size_t n = 0;
 	char *token_line;
-	int c, g;
+	int c;
 
 	read_line = _get_line(&lineptr, &n, stdin);
-	/*printf("red %d\n", read_line)*/
 	if (read_line == -1)
 	{
 		perror("error read_line\n");
@@ -31,9 +30,5 @@ int read_lin(char *tks[])
 	tks[c] = NULL;
 	free(lineptr);
 	lineptr = NULL;
-	for (g = 0; g < c; g++)
-	{
-		printf("tks %s\n", tks[g]);
-	}
 	return (c);
 }

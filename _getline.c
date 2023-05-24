@@ -54,11 +54,9 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 		_strcat(*lineptr, buf);
 		if ((*lineptr)[_strlen(*lineptr) - 1] == '\n')
 		{
-			free(new_lineptr);
 			return (_strlen(*lineptr));
 		}
 	}
-	free(new_lineptr);
 	new_lineptr = NULL;
 	return (-1);
 }

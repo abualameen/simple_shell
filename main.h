@@ -18,7 +18,7 @@ void s_u_env_handler(char *tks[]);
 void exit_handler(char *tks[]);
 int _strncmp(const char *str1, const char *str2, size_t n);
 int _atoi(char *s);
-char * fgett(char *buffer, int buffersize, FILE *stream);
+char *fgett(char *buffer, int buffersize, FILE *stream);
 extern char **environ;
 int _putchar(char c);
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
@@ -34,7 +34,7 @@ char *_strchr(char *str, int n);
 int ls_handler(int argc, char **argv);
 void prompt(void);
 int slas_bin_handler(int argc, char **argv);
-void env_handler(char * const* tks);
+void env_handler(char * const *tks);
 char *_strtok(char *str, const char *delim);
 char *_strdup(char *str);
 

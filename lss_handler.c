@@ -64,6 +64,11 @@ void lsss_handler(char *pts[], char *tks[], int k, int state)
 				perror("execve error for token,path\n");
 				exit(1);
 			}
+			else
+			{
+				perror("command not found");
+				exit(1);
+			}
 		}
 		waitpid(pid, &status, 0);
 	}
