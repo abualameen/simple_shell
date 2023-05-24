@@ -25,7 +25,7 @@ int execution(char *cpy)
 		}
 		argv[j] = NULL;
 		if (_strcmp(s1, argv[0]) == 0)
-                        exit(1);
+                        exit(0);
 		if (checkstat(argv[0]) == 0)
 		{
 			if (pathfinder(ptr, store, argv[0]) == NULL)
