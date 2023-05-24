@@ -1,152 +1,36 @@
 #include "main.h"
-int checker(void);
+
 /**
  * main - entry point
- * @argc: arg count
- * @argv: arg vector
+ *
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(void)
 {
-	char *paths = _getenv("PATH");
-	char *paths_dir[1025];
-	char *toks[4000];
-	char c_wd[1025];
-	int k = 0;
-	char *path_dir;
-	pid_t pid1;
-	int state;
-	int status1;
-	int j, r, w;
-	(void)argc;
-	(void)argv;
+	char *lineptr, *token;
+	char cpy[1024];
+	size_t n = 1024;
+	ssize_t read_line;
 
-	if (paths != NULL)
+	while (1)
 	{
-		path_dir = _strtok(paths, ":");
-		while (path_dir != NULL)
+		/*_putchar('$');
+		_putchar(' ');*/
+		lineptr = malloc(sizeof(char) * n);
+		read_line = getline(&lineptr, &n, stdin);
+		if (read_line == -1)
 		{
-			paths_dir[k] = path_dir;
-			k++;
-			path_dir = _strtok(NULL, ":");
+			free(lineptr);
+			exit(0);
 		}
+		_strcpy(cpy, lineptr);
+		token = strtok(lineptr, " \n");
+		while (token)
+		{
+			token = strtok(NULL, " \n");
+		}
+		free(lineptr);
+		execution(cpy);
 	}
-	w = isatty(fileno(stdin));
-	if (w == 1)
-	{
-		while (1)
-		{
-			prompt();
-			fflush(stdout);
-			state = 0;
-			j = read_lin(toks);
-			if (_strcom(toks[0], "exit") == 0)
-			{
-				exit_handler(toks);
-			}
-			else if (_strcom(toks[0], "setenv") == 0)
-			{
-				s_u_env_handler(toks);
-			}
-			else if (_strcom(toks[0], "cd") == 0)
-			{
-				getcwd(c_wd, sizeof(c_wd));
-				cd_handler(toks, c_wd);
-			}
-			else if (toks[0][0] == '/')
-			{
-				pid1 = fork();
-				if (pid1 == -1)
-				{
-					perror("second child not born");
-					exit(1);
-				}
-				else if (pid1 == 0)
-				{
-					execve(toks[0], toks, environ);
-					perror("execve error for full path not search\n");
-					exit(1);
-				}
-				else
-				{
-					waitpid(pid1, &status1, 0);
-				}
-			}
-			else if (_strcom(toks[0], "ls") == 0 || (_strcom(toks[0], "env") == 0))
-			{
-				lsss_handler(paths_dir, toks, k, state);
-			}
-			else
-			{
-				perror("command not found");
-			}
-		}
-		for (r = 0; r < j; r++)
-		{
-			free(toks[r]);
-		}
-		free(paths);
-	}
-	else
-	{
-		fflush(stdout);
-		state = 0;
-		j = read_lin(toks);
-		if (_strcom(toks[0], "exit") == 0)
-		{
-			exit_handler(toks);
-		}
-		else if (_strcom(toks[0], "setenv") == 0)
-		{
-			s_u_env_handler(toks);
-		}
-		else if (_strcom(toks[0], "cd") == 0)
-		{
-			getcwd(c_wd, sizeof(c_wd));
-			cd_handler(toks, c_wd);
-		}
-		else if (toks[0][0] == '/')
-		{
-			pid1 = fork();
-			if (pid1 == -1)
-			{
-				perror("second child not born");
-				exit(1);
-			}
-			else if (pid1 == 0)
-			{
-				execve(toks[0], toks, environ);
-				perror("execve error for full path not search\n");
-				exit(1);
-			}
-			else
-			{
-				waitpid(pid1, &status1, 0);
-			}
-		}
-		else if (_strcom(toks[0], "ls") == 0 || (_strcom(toks[0], "env") == 0))
-		{
-			lsss_handler(paths_dir, toks, k, state);
-		}
-		else
-		{
-			perror("command not found");
-		}
-		for (r = 0; r < j; r++)
-		{
-			free(toks[r]);
-		}
-		free(paths);
-	}
-	return (0);
-}
-
-/**
- * checker - checks
- * Return: 0
- */
-
-int checker(void)
-{
 	return (0);
 }

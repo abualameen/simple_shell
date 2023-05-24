@@ -1,25 +1,21 @@
 #include "main.h"
 
 /**
- * _strcpy - function that copys str
- * @dest: function param
- * @src: function argument
- * Return: dest
+ * _strcpy - copies the string pointed to by src
+ * including the terminating null byte (\0)
+ * to the buffer pointed to by dest
+ * @dest: destination
+ * @src: source
+ * Return: pointer to dest
  */
 char *_strcpy(char *dest, char *src)
 {
-	int f;
-	int g;
-	int count = 0;
+	int i = -1;
 
-	for (f = 0; src[f] != '\0'; f++)
-	{
-		count++;
-	}
-	for (g = 0; g < count; g++)
-	{
-		dest[g] = src[g];
-	}
-	dest[count] = '\0';
+	do {
+		i++;
+		dest[i] = src[i];
+	} while (src[i] != '\0');
+
 	return (dest);
 }

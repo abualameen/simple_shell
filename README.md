@@ -1,1 +1,1 @@
-This project is a project about implementation of simple shell programme that can perform basic shell functionality, it could perform simple task like running various command like ls , ls -l, ls -l /tmp and the likes, it could perform the exit commands and exit commands with argument, it can also set and unset enviromental variables and lots more
+Simple Shell
