@@ -14,18 +14,19 @@ int read_lin(char *tks[])
 	int c;
 
 	read_line = _get_line(&lineptr, &n, stdin);
+	/*printf("red %d\n", read_line)*/
 	if (read_line == -1)
 	{
 		perror("error read_line\n");
 		exit(1);
 	}
 	c = 0;
-	token_line = _strtok(lineptr, " \n");
+	token_line = strtok(lineptr, " \n");
 	while (token_line)
 	{
-		tks[c] = _strdup(token_line);
+		tks[c] = strdup(token_line);
 		c++;
-		token_line = _strtok(NULL, " \n");
+		token_line = strtok(NULL, " \n");
 	}
 	tks[c] = NULL;
 	free(lineptr);
