@@ -11,11 +11,11 @@
 
 char *_strcpy(char *dest, char *src);
 int execution(char *cpy);
-int _putchar(char c);
 int checkstat(char *command);
 void forknow(char *argument, char **arguments);
 char *pathfinder(char **ptr, char *storage, char *command);
 char *_getenv(const char *name);
+int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src, char *newstr);
 
 extern char **environ;

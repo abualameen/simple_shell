@@ -12,6 +12,7 @@ int execution(char *cpy)
 	char *argv[32], *ptr[5];
 	char store[125];
 	int j = 0;
+	char s1[] = "exit";
 
 	tokeeen = strtok(cpy, " \n");
 	if (tokeeen != NULL)
@@ -23,6 +24,8 @@ int execution(char *cpy)
 			tokeeen = strtok(NULL, " \n");
 		}
 		argv[j] = NULL;
+		if (_strcmp(s1, argv[0]) == 0)
+                        exit(1);
 		if (checkstat(argv[0]) == 0)
 		{
 			if (pathfinder(ptr, store, argv[0]) == NULL)
