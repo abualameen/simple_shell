@@ -38,9 +38,11 @@ char *_getenv(const char *name)
 		strcomm = _strcom(part_a, name);
 		if (strcomm == 0)
 		{
-			break;
+			free(part_a);
+			return (part_b);
 		}
+		free(part_a);
+		free(part_b);
 	}
-	free(part_a);
-	return (part_b);
+	return (NULL);
 }
