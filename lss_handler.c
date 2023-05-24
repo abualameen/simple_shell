@@ -13,7 +13,6 @@ void lsss_handler(char *pts[], char *tks[], int k, int state)
 {
 	char *cpy_path;
 	int e;
-	/*extern char **environ;*/
 	int status;
 	pid_t pid;
 

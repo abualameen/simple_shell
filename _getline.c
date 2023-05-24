@@ -1,5 +1,5 @@
-#include "miin.h"
-#define LIN_MAX 3000
+#include "main.h"
+#define LIN_MAX 4000
 int line_no(void);
 /**
  * _get_line - getline input from user
@@ -13,7 +13,6 @@ int line_no(void);
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 {
 	char buf[LIN_MAX];
-	ssize_t nbytes;
 	char *new_lineptr;
 
 	*n = LIN_MAX;
@@ -37,7 +36,7 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 		}
 	}
 	(*lineptr)[0] = '\0';
-	while ((nbytes = read(STDIN_FILENO, buf, *n)) > 0)
+	while (fgett(buf, sizeof(buf), stdin) != NULL)
 	{
 		if (*n - _strlen(*lineptr) < sizeof(buf))
 		{
@@ -55,11 +54,12 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 		_strcat(*lineptr, buf);
 		if ((*lineptr)[_strlen(*lineptr) - 1] == '\n')
 		{
+			free(new_lineptr);
 			return (_strlen(*lineptr));
 		}
 	}
-	free(*lineptr);
-	*lineptr = NULL;
+	free(new_lineptr);
+	new_lineptr = NULL;
 	return (-1);
 }
 

@@ -19,7 +19,12 @@ void _slit_str(char *s, char *part1, char *part2, char delim)
 
 	a = b = c = 0;
 	count = _strlen(s);
-	dst = malloc(sizeof(char *) * count);
+	dst = malloc(sizeof(char *)  * count);
+	if (dst == NULL)
+	{
+		perror("malloc error for dst in _slit_str\n");
+		exit(1);
+	}
 	s_cp = _strcpy(dst, s);
 
 	while (s[a] != '\0')
