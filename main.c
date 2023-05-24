@@ -53,7 +53,6 @@ int main(int argc, char **argv)
 				getcwd(c_wd, sizeof(c_wd));
 				cd_handler(toks, c_wd);
 			}
-		
 			else if (toks[0][0] == '/')
 			{
 				pid1 = fork();
