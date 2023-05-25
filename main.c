@@ -15,7 +15,7 @@ int main(void)
 	while (1)
 	{
 		lineptr = malloc(sizeof(char) * n);
-		read_line = getline(&lineptr, &n, stdin);
+		read_line = _getline(&lineptr, &n, stdin);
 		if (read_line == -1)
 		{
 			free(lineptr);
