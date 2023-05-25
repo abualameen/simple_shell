@@ -3,7 +3,6 @@
 /**
  * execution - execute a command
  * @cpy: copy of the string of arguments
- * @arguments: number of arguments passed
  * Return: -1 on failure
  */
 int execution(char *cpy)
@@ -25,18 +24,18 @@ int execution(char *cpy)
 		}
 		argv[j] = NULL;
 		if (_strcmp(s1, argv[0]) == 0)
-                        exit(0);
+			exit(0);
 		if (checkstat(argv[0]) == 0)
 		{
 			if (pathfinder(ptr, store, argv[0]) == NULL)
-                        {
-                                perror("./hsh");
-                                return (-1);
-                        }
-                        else
-                        {
-                                forknow(ptr[0], argv);
-                        }
+			{
+				perror("./hsh");
+				return (-1);
+			}
+			else
+			{
+				forknow(ptr[0], argv);
+			}
 		}
 		else
 		{
